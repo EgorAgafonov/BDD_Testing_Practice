@@ -9,11 +9,16 @@ from selenium.webdriver.common.action_chains import ActionBuilder
 from selenium.webdriver import Keys
 import time
 
-
-@when(u'we visit "{text}"')
-def step(context, text):
-    context.browser.get(text)
+@given(u'user is on page "{url}"')
+def step_1(context, url):
+    context.browser.get(url)
     time.sleep(3)
+
+
+@when(u'user enters "{text}" in search field')
+def step_2(context, text):
+
+
 
 
 @then('it should have a title "Google"')
