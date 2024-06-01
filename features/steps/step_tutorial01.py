@@ -1,21 +1,15 @@
-from behave import *
-from selenium import webdriver
-from selenium.webdriver.chrome.options import *
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver import ActionChains
-from selenium.webdriver.common.action_chains import ActionBuilder
 from selenium.webdriver import Keys
-import time
+from behave import given, when, then
 
 
-@given(u'user is on page "{url}"')
+@given('user is on page "{url}"')
 def step_1(context, url):
     context.browser.get(url)
 
 
-@when(u'user enters "{text}" in search field')
+@when('user enters "{text}" in search field')
 def step_2(context, text):
     context.browser.implicitly_wait(5)
     search_field = context.browser.find_element(By.CSS_SELECTOR, 'textarea[name="q"]')
