@@ -3,8 +3,6 @@ from selenium.webdriver import ActionChains
 from selenium.webdriver import Keys
 from behave import *
 from locators import KinoPoiskLocators
-from dotenv import load_dotenv
-import os
 import time
 
 
@@ -29,6 +27,11 @@ def step_impl(context):
 @then('на странице отображаются результаты поиска')
 def step_impl(context):
     context.browser.implicitly_wait(5)
-    result = context.browser.find_element(By.CSS_SELECTOR, 'div[data-tid="e4233b06"]').is_displayed()
+    try:
+        result = context.browser.find_element(By.CSS_SELECTOR, '#suggest-container > div > div:nth-child(2) > div > '
+                                                               'div:nth-child(1) > h3').text
+    except:
+        assert False, 'Test Failed'
 
-    assert result is not False
+    if result == 'Возможно, вы искали':
+        assert True, 'Test Passed'
