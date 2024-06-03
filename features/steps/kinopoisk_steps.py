@@ -3,6 +3,9 @@ from selenium.webdriver import ActionChains
 from selenium.webdriver import Keys
 from behave import *
 from locators import KinoPoiskLocators
+from dotenv import load_dotenv
+import os
+import time
 
 
 @given(u'браузер на странице "{url}"')
