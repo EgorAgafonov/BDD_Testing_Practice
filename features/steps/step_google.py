@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver import ActionChains
 from selenium.webdriver import Keys
-from behave import given, when, then
+from behave import *
 
 
 @given('user is on page "{url}"')
@@ -25,5 +25,6 @@ def step_3(context):
 @then('page displays search results')
 def step_4(context):
     context.browser.implicitly_wait(5)
-    results = context.browser.find_elements(By.CSS_SELECTOR, 'div[class="MjjYud"]')
-    print(f"\nПо запросу найдено: {len(results)} сайтов (01 страница).")
+    result = context.browser.find_elements(By.CSS_SELECTOR, 'div[class="MjjYud"]').is_displayed()
+    assert result is False
+
