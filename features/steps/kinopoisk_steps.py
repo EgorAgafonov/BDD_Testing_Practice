@@ -6,7 +6,7 @@ from locators import KinoPoiskLocators
 import time
 
 
-@given(u'браузер на странице "{url}"')
+@given('браузер на странице "{url}"')
 def step_impl(context, url):
     context.browser.get(url)
 
@@ -27,11 +27,6 @@ def step_impl(context):
 @then('на странице отображаются результаты поиска')
 def step_impl(context):
     context.browser.implicitly_wait(5)
-    try:
-        result = context.browser.find_element(By.CSS_SELECTOR, '#suggest-container > div > div:nth-child(2) > div > '
-                                                               'div:nth-child(1) > h3').text
-    except:
-        assert False, 'Test Failed'
-
-    if result == 'Возможно, вы искали':
-        assert True, 'Test Passed'
+    result = context.browser.find_element(By.CSS_SELECTOR, '#suggest-container > div > div:nth-child(2) > div > '
+                                                           'div:nth-child(1) > h3')
+    assert result.is_displayed()
