@@ -27,5 +27,5 @@ def step_3(context):
 def step_4(context):
     context.browser.implicitly_wait(5)
     results = context.browser.find_elements(By.CSS_SELECTOR, 'div[class="MjjYud"]')
-    for i in results:
-        assert i.is_displayed() is not False
+
+    assert len(results) != 0
