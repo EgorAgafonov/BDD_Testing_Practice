@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver import ActionChains
 from behave import *
 from locators import PetFriendsLocators
@@ -28,13 +30,21 @@ def step_impl(context):
     context.browser.implicitly_wait(5)
     enter_btn = context.browser.find_element(*PetFriendsLocators.BUTTON_ENTER)
     enter_btn.click()
+    time.sleep(2)
 
 
-@then('система адресует Пользователя на страницу path= /all_pets')
+@then('система адресует Пользователя на страницу path=/all_pets')
 def step_impl(context):
     context.browser.implicitly_wait(5)
-    cards = context.browser.find_element(*PetFriendsLocators.DECK_CARD)
-    cards.is_displayed()
     current_url = urlparse(context.browser.current_url)
 
     assert current_url.path == '/all_pets', "\nTest Failed! Current URL's path is not /all_pets."
+
+
+@then('система отказывает Пользователю в авторизации')
+def step_impl(context):
+    context.browser.implicitly_wait(5)
+    current_url = urlparse(context.browser.current_url)
+
+    assert current_url.path != '/all_pets', "\nTest Failed! Current URL's path is /all_pets."
+
