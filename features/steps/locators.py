@@ -21,4 +21,5 @@ class PetFriendsLocators:
     FIELD_EMAIL = (By.ID, 'email')
     FIELD_PASSWORD = (By.ID, 'pass')
     BUTTON_ENTER = (By.XPATH, '//button[@type="submit"]')
+    DECK_CARD = (By.CSS_SELECTOR, 'div[class="card"]')
 
