@@ -14,3 +14,11 @@ class KinoPoiskLocators:
     PROMO_VIDEO = (By.CSS_SELECTOR, 'div[aria-label="Промо"]')
     PROFILE_BUTTON = (By.CSS_SELECTOR, 'button[aria-label="Меню профиля"]')
 
+
+class PetFriendsLocators:
+    """Класс переменных для определения локаторов элементов на странице 'https://petfriends.skillfactory.ru/login'"""
+
+    FIELD_EMAIL = (By.ID, 'email')
+    FIELD_PASSWORD = (By.ID, 'pass')
+    BUTTON_ENTER = (By.XPATH, '//button[@type="submit"]')
+
