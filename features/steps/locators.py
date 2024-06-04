@@ -13,6 +13,7 @@ class KinoPoiskLocators:
     SEARCH_BUTTON = (By.CSS_SELECTOR, 'button[type="submit"]')
     PROMO_VIDEO = (By.CSS_SELECTOR, 'div[aria-label="Промо"]')
     PROFILE_BUTTON = (By.CSS_SELECTOR, 'button[aria-label="Меню профиля"]')
+    STACK_RESULTS = (By.CSS_SELECTOR, 'div[data-tid="e4233b06"]')
 
 
 class PetFriendsLocators:
