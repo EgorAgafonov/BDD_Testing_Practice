@@ -4,6 +4,7 @@ from selenium.webdriver import ActionChains
 from behave import *
 from locators import PetFriendsLocators
 from urllib.parse import urlparse
+import os
 
 
 @given('Пользователь на странице "{url}"')
@@ -49,7 +50,6 @@ def step_impl(context):
     assert current_url.path != '/all_pets', "\nTest Failed! Current URL's path is /all_pets."
 
 
-
 @given(u'Пользователь находится в личном кабинете (Мои питомцы)')
 def step_impl(context):
     context.browser.implicitly_wait(5)
@@ -62,39 +62,48 @@ def step_impl(context):
     context.browser.implicitly_wait(5)
     addpet_btn = context.browser.find_element(*PetFriendsLocators.BUTTON_ADD_CARD)
     addpet_btn.click()
+    time.sleep(1)
+
 
 @when(u'указывает фото питомца')
 def step_impl(context):
     context.browser.implicitly_wait(5)
-    photo_field = context.browser.find_element(*PetFriendsLocators.FIELD_PET_PHOTO)
-    pet_photo = 'cat_1.jpg'
-    ActionChains(context.browser).send_keys_to_element(photo_field, pet_photo).pause(1).perform()
+    input_field = context.browser.find_element(*PetFriendsLocators.FIELD_PET_PHOTO)
+    pet_photo = os.path.abspath('cat_1.jpg')
+    input_field.send_keys(pet_photo)
 
 
-@when(u'вводит в форму карточки значение "{name}"')
+@when(u'вводит в форму карточки имя питомца "{name}"')
 def step_impl(context, name):
     context.browser.implicitly_wait(5)
     name_field = context.browser.find_element(*PetFriendsLocators.FIELD_PET_NAME)
     ActionChains(context.browser).send_keys_to_element(name_field, name).pause(1).perform()
 
 
-@when(u'значение "{breed}"')
+@when(u'название породы "{breed}"')
 def step_impl(context, breed):
     context.browser.implicitly_wait(5)
     breed_field = context.browser.find_element(*PetFriendsLocators.FIELD_PET_BREED)
     ActionChains(context.browser).send_keys_to_element(breed_field, breed).pause(1).perform()
 
 
-@when(u'значение "Возраст"')
-def step_impl(context):
+@when(u'значение возраста "{age}"')
+def step_impl(context, age):
+    context.browser.implicitly_wait(5)
+    age_field = context.browser.find_element(*PetFriendsLocators.FIELD_PET_AGE)
+    ActionChains(context.browser).send_keys_to_element(age_field, age).pause(1).perform()
 
 
 @when(u'нажимает кнопку \'Добавить\'')
 def step_impl(context):
+    context.browser.implicitly_wait(5)
+    submit_btn = context.browser.find_element(*PetFriendsLocators.BUTTON_SUBMIT_CARD)
+    submit_btn.click()
+    time.sleep(1)
 
 
 @then(u'созданная карточка отображается в стеке питомцев Пользователя')
 def step_impl(context):
-
-
-
+    context.browser.implicitly_wait(5)
+    results = context.browser.find_elements(*PetFriendsLocators.STACK_CARDS)
+    assert len(results) != 0

@@ -24,7 +24,7 @@ class PetFriendsLocators:
     BUTTON_ENTER = (By.XPATH, '//button[@type="submit"]')
     BUTTON_MY_PETS = (By.CSS_SELECTOR, 'a[href="/my_pets"]')
     BUTTON_ADD_CARD = (By.CSS_SELECTOR, 'button[data-target="#addPetsModal"]')
-    FIELD_PET_PHOTO = (By.ID, 'pet_photo')
+    FIELD_PET_PHOTO = (By.CSS_SELECTOR, 'input[name="photo"]')
     FIELD_PET_NAME = (By.ID, 'name')
     FIELD_PET_BREED = (By.ID, 'animal_type')
     FIELD_PET_AGE = (By.ID, 'age')
