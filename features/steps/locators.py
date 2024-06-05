@@ -22,5 +22,12 @@ class PetFriendsLocators:
     FIELD_EMAIL = (By.ID, 'email')
     FIELD_PASSWORD = (By.ID, 'pass')
     BUTTON_ENTER = (By.XPATH, '//button[@type="submit"]')
-    DECK_CARD = (By.CSS_SELECTOR, 'div[class="card"]')
+    BUTTON_MY_PETS = (By.CSS_SELECTOR, 'a[href="/my_pets"]')
+    BUTTON_ADD_CARD = (By.CSS_SELECTOR, 'button[data-target="#addPetsModal"]')
+    FIELD_PET_PHOTO = (By.ID, 'pet_photo')
+    FIELD_PET_NAME = (By.ID, 'name')
+    FIELD_PET_BREED = (By.ID, 'animal_type')
+    FIELD_PET_AGE = (By.ID, 'age')
+    BUTTON_SUBMIT_CARD = (By.CSS_SELECTOR, 'button[onclick="add_pet();"]')
+    STACK_CARDS = (By.XPATH, '//*[@id="all_my_pets"]/table/tbody/tr')
 

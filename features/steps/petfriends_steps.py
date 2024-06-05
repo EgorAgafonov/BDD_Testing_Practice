@@ -48,3 +48,38 @@ def step_impl(context):
 
     assert current_url.path != '/all_pets', "\nTest Failed! Current URL's path is /all_pets."
 
+
+
+@given(u'Пользователь находится в личном кабинете (Мои питомцы)')
+def step_impl(context):
+
+
+
+@when(u'Пользователь нажимает на кнопку \'Добавить питомца\'')
+def step_impl(context):
+
+@when(u'указывает фото питомца')
+def step_impl(context):
+
+
+@when(u'вводит в форму карточки значение "Имя питомца"')
+def step_impl(context):
+
+
+@when(u'значение "Порода"')
+def step_impl(context):
+
+
+@when(u'значение "Возраст"')
+def step_impl(context):
+
+
+@when(u'нажимает кнопку \'Добавить\'')
+def step_impl(context):
+
+
+@then(u'созданная карточка отображается в стеке питомцев Пользователя')
+def step_impl(context):
+
+
+
