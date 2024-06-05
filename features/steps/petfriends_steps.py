@@ -30,7 +30,7 @@ def step_impl(context):
     context.browser.implicitly_wait(5)
     enter_btn = context.browser.find_element(*PetFriendsLocators.BUTTON_ENTER)
     enter_btn.click()
-    time.sleep(2)
+    time.sleep(1)
 
 
 @then('система адресует Пользователя на страницу path=/all_pets')
@@ -52,22 +52,37 @@ def step_impl(context):
 
 @given(u'Пользователь находится в личном кабинете (Мои питомцы)')
 def step_impl(context):
-
+    context.browser.implicitly_wait(5)
+    mypets_btn = context.browser.find_element(*PetFriendsLocators.BUTTON_MY_PETS)
+    mypets_btn.click()
 
 
 @when(u'Пользователь нажимает на кнопку \'Добавить питомца\'')
 def step_impl(context):
+    context.browser.implicitly_wait(5)
+    addpet_btn = context.browser.find_element(*PetFriendsLocators.BUTTON_ADD_CARD)
+    addpet_btn.click()
 
 @when(u'указывает фото питомца')
 def step_impl(context):
+    context.browser.implicitly_wait(5)
+    photo_field = context.browser.find_element(*PetFriendsLocators.FIELD_PET_PHOTO)
+    pet_photo = 'cat_1.jpg'
+    ActionChains(context.browser).send_keys_to_element(photo_field, pet_photo).pause(1).perform()
 
 
-@when(u'вводит в форму карточки значение "Имя питомца"')
-def step_impl(context):
+@when(u'вводит в форму карточки значение "{name}"')
+def step_impl(context, name):
+    context.browser.implicitly_wait(5)
+    name_field = context.browser.find_element(*PetFriendsLocators.FIELD_PET_NAME)
+    ActionChains(context.browser).send_keys_to_element(name_field, name).pause(1).perform()
 
 
-@when(u'значение "Порода"')
-def step_impl(context):
+@when(u'значение "{breed}"')
+def step_impl(context, breed):
+    context.browser.implicitly_wait(5)
+    breed_field = context.browser.find_element(*PetFriendsLocators.FIELD_PET_BREED)
+    ActionChains(context.browser).send_keys_to_element(breed_field, breed).pause(1).perform()
 
 
 @when(u'значение "Возраст"')
