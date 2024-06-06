@@ -106,4 +106,11 @@ def step_impl(context):
 def step_impl(context):
     context.browser.implicitly_wait(5)
     results = context.browser.find_elements(*PetFriendsLocators.STACK_CARDS)
-    assert len(results) != 0
+    assert len(results) != 0, "TEST PASSED! Карточка отображается в стеке."
+
+
+@then(u'созданная карточка не отображается в стеке питомцев Пользователя')
+def step_impl(context):
+    context.browser.implicitly_wait(5)
+    results = context.browser.find_elements(*PetFriendsLocators.STACK_CARDS)
+    assert len(results) == 0, "TEST FAILED! Карточка c невалидными параметрами отображается в стеке."
