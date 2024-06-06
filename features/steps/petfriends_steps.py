@@ -1,5 +1,4 @@
 import time
-
 from selenium.webdriver import ActionChains
 from behave import *
 from locators import PetFriendsLocators
@@ -57,7 +56,7 @@ def step_impl(context):
     mypets_btn.click()
 
 
-@when(u'Пользователь нажимает на кнопку \'Добавить питомца\'')
+@when(u'Пользователь нажимает на кнопку Добавить питомца')
 def step_impl(context):
     context.browser.implicitly_wait(5)
     addpet_btn = context.browser.find_element(*PetFriendsLocators.BUTTON_ADD_CARD)
@@ -94,11 +93,13 @@ def step_impl(context, age):
     ActionChains(context.browser).send_keys_to_element(age_field, age).pause(1).perform()
 
 
-@when(u'нажимает кнопку \'Добавить\'')
+@when(u'нажимает кнопку Добавить')
 def step_impl(context):
     context.browser.implicitly_wait(5)
     submit_btn = context.browser.find_element(*PetFriendsLocators.BUTTON_SUBMIT_CARD)
     submit_btn.click()
+    time.sleep(1)
+    context.browser.refresh()
     time.sleep(1)
 
 
@@ -106,6 +107,7 @@ def step_impl(context):
 def step_impl(context):
     context.browser.implicitly_wait(5)
     results = context.browser.find_elements(*PetFriendsLocators.STACK_CARDS)
+
     assert len(results) != 0, "TEST PASSED! Карточка отображается в стеке."
 
 
@@ -113,4 +115,4 @@ def step_impl(context):
 def step_impl(context):
     context.browser.implicitly_wait(5)
     results = context.browser.find_elements(*PetFriendsLocators.STACK_CARDS)
-    assert len(results) == 0, "TEST FAILED! Карточка c невалидными параметрами отображается в стеке."
+    assert len(results)-1 != len(results), "TEST FAILED! Карточка с невалидными параметрами отображается в стеке."

@@ -30,4 +30,5 @@ class PetFriendsLocators:
     FIELD_PET_AGE = (By.ID, 'age')
     BUTTON_SUBMIT_CARD = (By.CSS_SELECTOR, 'button[onclick="add_pet();"]')
     STACK_CARDS = (By.XPATH, '//*[@id="all_my_pets"]/table/tbody/tr')
+    MY_PETS_QUANTITY = (By.XPATH, "//*[@id='all_my_pets']/table/tbody/tr")
 
