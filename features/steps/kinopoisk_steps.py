@@ -46,11 +46,11 @@ def step_impl(context):
     premier_field = context.browser.find_element(*KinoPoiskLocators.FIELD_PREMIER)
     context.browser.execute_script('window.scrollTo(0, 400);')
     ActionChains(context.browser).double_click(premier_field).perform()
-    time.sleep(2)
+    time.sleep(3)
     ActionChains(context.browser).send_keys_to_element(premier_field, Keys.DOWN).send_keys(Keys.DOWN)\
-        .send_keys(Keys.DOWN).send_keys(Keys.DOWN).send_keys(Keys.DOWN).send_keys(Keys.DOWN).send_keys(Keys.ENTER)\
-        .perform()
-    time.sleep(5)
+        .send_keys(Keys.DOWN).send_keys(Keys.DOWN).send_keys(Keys.DOWN).send_keys(Keys.DOWN).pause(1)\
+        .send_keys(Keys.ENTER).perform()
+    time.sleep(3)
 
 
 
