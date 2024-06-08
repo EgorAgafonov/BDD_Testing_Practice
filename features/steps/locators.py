@@ -14,6 +14,8 @@ class KinoPoiskLocators:
     PROMO_VIDEO = (By.CSS_SELECTOR, 'div[aria-label="Промо"]')
     PROFILE_BUTTON = (By.CSS_SELECTOR, 'button[aria-label="Меню профиля"]')
     STACK_RESULTS = (By.CSS_SELECTOR, 'div[class="search_results"]')
+    BUTTON_ADVANCED_SEARCH = (By.CSS_SELECTOR, 'a[aria-label="Расширенный поиск"]')
+    FIELD_PREMIER = (By.ID, 'prem_month')
 
 
 class PetFriendsLocators:
