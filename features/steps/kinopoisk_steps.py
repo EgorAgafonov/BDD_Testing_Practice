@@ -44,25 +44,36 @@ def step_impl(context):
 def step_impl(context):
     context.browser.implicitly_wait(5)
     premier_field = context.browser.find_element(*KinoPoiskLocators.FIELD_PREMIER)
-    context.browser.execute_script('window.scrollTo(0, 400);')
-    ActionChains(context.browser).double_click(premier_field).perform()
-    time.sleep(3)
-    ActionChains(context.browser).send_keys_to_element(premier_field, Keys.DOWN).send_keys(Keys.DOWN)\
-        .send_keys(Keys.DOWN).send_keys(Keys.DOWN).send_keys(Keys.DOWN).send_keys(Keys.DOWN).pause(1)\
-        .send_keys(Keys.ENTER).perform()
-    time.sleep(3)
+    context.browser.execute_script('window.scrollTo(0, 500);')
+    premier_field.click()
+    premier_field.send_keys(Keys.DOWN).send_keys(Keys.DOWN).send_keys(Keys.DOWN).send_keys(Keys.DOWN)\
+        .send_keys(Keys.DOWN).send_keys(Keys.DOWN).send_keys(Keys.ENTER).perform()
 
 
+@when(u'год \'2024\'')
+def step_impl(context):
+    context.browser.implicitly_wait(5)
+    year_field = context.browser.find_element(*KinoPoiskLocators.FIELD_PREMIER)
+    year_field.click()
+    year_field.send_keys(Keys.DOWN).send_keys(Keys.DOWN).send_keys(Keys.ENTER).perform()
 
-# @when(u'год \'2024\'')
-# def step_impl(context):
-#
-#
-#
-# @when(u'страну премьеры \'США\'')
-# def step_impl(context):
-#
-#
-#
+
+@when(u'страну премьеры \'США\'')
+def step_impl(context):
+    context.browser.implicitly_wait(5)
+    country_field = context.browser.find_element(*KinoPoiskLocators.FIELD_PREMIER)
+    country_field.click()
+    country_field.send_keys(Keys.DOWN).send_keys(Keys.ENTER).perform()
+    time.sleep(2)
+
+
+@when(u'нажимает кнопку \'Поиск\'')
+def step_impl(context):
+    context.browser.implicitly_wait(5)
+    submit_btn = context.browser.find_element(*KinoPoiskLocators.BUTTON_SUBMIT_SEARCH)
+    submit_btn.click()
+    time.sleep(4)
+
+
 # @then(u'на странице отображается список всех премьер фильмов за указанный период')
 # def step_impl(context):

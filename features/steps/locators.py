@@ -16,6 +16,7 @@ class KinoPoiskLocators:
     STACK_RESULTS = (By.CSS_SELECTOR, 'div[class="search_results"]')
     BUTTON_ADVANCED_SEARCH = (By.CSS_SELECTOR, 'a[aria-label="Расширенный поиск"]')
     FIELD_PREMIER = (By.ID, 'prem_month')
+    BUTTON_SUBMIT_SEARCH = (By.XPATH, '//*[@id="formSearchMain"]/input[11]')
 
 
 class PetFriendsLocators:
