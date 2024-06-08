@@ -46,7 +46,7 @@ def step_impl(context):
     premier_field = context.browser.find_element(*KinoPoiskLocators.FIELD_PREMIER)
     context.browser.execute_script('window.scrollTo(0, 500);')
     premier_field.click()
-    premier_field.send_keys(Keys.DOWN).send_keys(Keys.DOWN).send_keys(Keys.DOWN).send_keys(Keys.DOWN)\
+    premier_field.send_keys(Keys.DOWN).send_keys(Keys.DOWN).send_keys(Keys.DOWN).send_keys(Keys.DOWN) \
         .send_keys(Keys.DOWN).send_keys(Keys.DOWN).send_keys(Keys.ENTER).perform()
 
 
@@ -75,5 +75,9 @@ def step_impl(context):
     time.sleep(4)
 
 
-# @then(u'на странице отображается список всех премьер фильмов за указанный период')
-# def step_impl(context):
+@then(u'на странице отображается список всех премьер фильмов за указанный период')
+def step_impl(context):
+    context.browser.implicitly_wait(5)
+    results = context.browser.find_element(*KinoPoiskLocators.PREMIERS_RESULTS).is_displayed()
+
+    assert results is not False
