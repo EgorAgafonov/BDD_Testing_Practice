@@ -42,12 +42,12 @@ def step_impl(context):
 def step_impl(context):
     context.browser.implicitly_wait(5)
     premier_field = context.browser.find_element(*KinoPoiskLocators.FIELD_PREMIER)
-    context.browser.execute_script('window.scrollTo(0, 400);')
+    context.browser.execute_script('window.scrollTo(0, 500);')
     time.sleep(2)
     premier_field.click()
     ActionChains(context.browser).send_keys_to_element(premier_field, Keys.DOWN).send_keys(Keys.DOWN)\
-        .send_keys(Keys.DOWN).send_keys(Keys.DOWN).send_keys(Keys.DOWN).send_keys(Keys.DOWN).send_keys(Keys.ENTER)\
-        .perform()
+        .send_keys(Keys.DOWN).send_keys(Keys.DOWN).send_keys(Keys.DOWN).send_keys(Keys.DOWN)\
+        .send_keys(Keys.ENTER).pause(1).perform()
 
 
 @when(u'год \'2024\'')
@@ -56,7 +56,7 @@ def step_impl(context):
     year_field = context.browser.find_element(*KinoPoiskLocators.FIELD_YEAR)
     year_field.click()
     ActionChains(context.browser).send_keys_to_element(year_field, Keys.DOWN).send_keys(Keys.DOWN)\
-        .send_keys(Keys.ENTER).perform()
+        .send_keys(Keys.ENTER).pause(1).perform()
 
 
 @when(u'страну премьеры \'США\'')
@@ -64,8 +64,8 @@ def step_impl(context):
     context.browser.implicitly_wait(5)
     country_field = context.browser.find_element(*KinoPoiskLocators.FIELD_COUNTRY)
     country_field.click()
-    ActionChains(context.browser).send_keys_to_element(country_field, Keys.DOWN).send_keys(Keys.ENTER).perform()
-    time.sleep(2)
+    ActionChains(context.browser).send_keys_to_element(country_field, Keys.DOWN).send_keys(Keys.ENTER).pause(1)\
+        .perform()
 
 
 @when(u'нажимает кнопку \'Поиск\'')
