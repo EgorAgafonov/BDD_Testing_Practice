@@ -20,6 +20,7 @@ class KinoPoiskLocators:
     FIELD_COUNTRY = (By.ID, "prem_type")
     BUTTON_SUBMIT_SEARCH = (By.XPATH, '//*[@id="formSearchMain"]/input[11]')
     PREMIERS_RESULTS = (By.CSS_SELECTOR, 'div[class="element"]')
+    PREMIERS_NAMES = (By.CSS_SELECTOR, 'p[class="name"] > a')
 
 
 class PetFriendsLocators:

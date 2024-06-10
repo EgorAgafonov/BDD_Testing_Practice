@@ -82,3 +82,7 @@ def step_impl(context):
     results = context.browser.find_element(*KinoPoiskLocators.PREMIERS_RESULTS).is_displayed()
 
     assert results is not False
+    # results = context.browser.find_elements(*KinoPoiskLocators.PREMIERS_NAMES)
+    # for name in results:
+    #     print(f"\n{name.text}")
+    # assert results is not False
