@@ -79,10 +79,9 @@ def step_impl(context):
 @then(u'на странице отображается список всех премьер фильмов за указанный период')
 def step_impl(context):
     context.browser.implicitly_wait(5)
-    results = context.browser.find_element(*KinoPoiskLocators.PREMIERS_RESULTS).is_displayed()
-
-    assert results is not False
-    # results = context.browser.find_elements(*KinoPoiskLocators.PREMIERS_NAMES)
-    # for name in results:
-    #     print(f"\n{name.text}")
+    # results = context.browser.find_element(*KinoPoiskLocators.PREMIERS_RESULTS).is_displayed()
     # assert results is not False
+    results = context.browser.find_elements(*KinoPoiskLocators.PREMIERS_NAMES)
+    for name in results:
+        print(f"\n{name.text}")
+    assert results is not False
